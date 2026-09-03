@@ -1,0 +1,14 @@
+---
+description: Auth and session security conventions
+globs: lib/auth/**/*,middleware.ts,app/(auth)/**/*,app/api/auth/**/*
+alwaysApply: false
+---
+
+# Auth
+
+- NextAuth config: `lib/auth/auth.ts` + `auth.config.ts`; route handlers under `app/api/auth/[...nextauth]`.
+- Session strategy is **JWT**. Extend types via `types/next-auth.d.ts`.
+- Protect pages with middleware matcher (`/dashboard/:path*`) and `requireAuth()` in server code.
+- Credentials: bcrypt hash compare only; never log passwords or `passwordHash`.
+- Auth forms validate with `lib/validations/auth.ts`.
+- New protected top-level routes must be added to `middleware.ts` `matcher` if outside `/dashboard`.

@@ -1,0 +1,15 @@
+---
+description: Server Actions and validation patterns
+globs: lib/**/actions.ts,lib/validations/**/*
+alwaysApply: false
+---
+
+# Server Actions & Validation
+
+- Files that mutate data start with `"use server"`.
+- First line of business logic: `const user = await requireAuth()`.
+- Parse with Zod `safeParse`; map failures to `fieldErrors` when useful.
+- Return `ActionResult` consistently — do not throw for expected validation/auth failures.
+- After successful writes, `revalidatePath` for dashboard and the feature route.
+- Keep Prisma queries in `queries.ts` (or colocated helpers); actions orchestrate auth → validate → mutate → revalidate.
+- Do not call Server Actions from Server Components for initial page load — use query helpers instead.

@@ -1,0 +1,14 @@
+---
+description: Prisma and database conventions
+globs: prisma/**/*,lib/db/**/*,lib/**/queries.ts,lib/**/actions.ts
+alwaysApply: false
+---
+
+# Database / Prisma
+
+- Edit `prisma/schema.prisma`, then create a migration (`npm run db:migrate`). Commit `prisma/migrations/`.
+- Use the shared client from `@/lib/db/prisma` — do not instantiate `PrismaClient` elsewhere.
+- Money fields: `Decimal` (`@db.Decimal(12, 2)`); use helpers in `lib/income/decimal.ts`.
+- Always constrain queries with the authenticated user's `userId`.
+- Prefer explicit `select`/`include` when returning data to the client; avoid leaking password hashes.
+- Do not use `db:push` for shared environments — migrations only.
