@@ -1,0 +1,15 @@
+---
+description: Keep product docs in sync with feature work
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Product documentation
+
+Canonical docs live under `docs/`:
+
+- `PRD.md` — requirements, phases, status tables
+- `ARCHITECTURE.md` — layers, flows, data model
+- `DESIGN_SYSTEM.md` — tokens, components, theming
+
+When implementing a planned nav module (expenses, budgets, etc.), update PRD status and enable nav only when the route works. Reflect schema/layer changes in ARCHITECTURE. New colors or component patterns belong in DESIGN_SYSTEM (prefer CSS variables over hard-coded values).

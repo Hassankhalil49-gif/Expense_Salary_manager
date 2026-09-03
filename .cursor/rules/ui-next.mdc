@@ -1,0 +1,15 @@
+---
+description: React and Next.js App Router UI patterns
+globs: app/**/*.tsx,components/**/*.tsx
+alwaysApply: false
+---
+
+# UI / App Router
+
+- Default to async Server Components for data loading (`lib/**/get-*-data.ts` patterns).
+- Client components: forms, charts, dialogs, theme toggle — keep data fetching on the server when possible.
+- Compose from `components/ui/*`; add shadcn components via the project's `components.json` style (New York).
+- Feature UI lives under `components/<feature>/`; pages under `app/` stay thin.
+- Dashboard nav: `lib/dashboard/navigation.ts` — set `enabled: true` only when the route exists and works.
+- Use existing loading/error boundaries under `app/dashboard/` as templates for new sections.
+- Prefer Tailwind tokens / CSS variables already in `app/globals.css`; avoid one-off color systems.

@@ -1,0 +1,28 @@
+---
+description: Core project conventions for Expense & Salary Manager
+alwaysApply: true
+---
+
+# Expense & Salary Manager
+
+Next.js 15 App Router + Prisma/PostgreSQL + NextAuth v5 (Credentials, JWT) + Zod + shadcn/ui.
+
+## Always
+
+- Prefer Server Components; `"use client"` only for interactive UI.
+- Mutations: Server Actions in `lib/**/actions.ts` with `"use server"`.
+- Auth: call `requireAuth()` before user-owned DB work; filter by `userId`.
+- Validate with Zod in `lib/validations/*` before writes.
+- Action results: `{ success: true, data? }` | `{ success: false, error, fieldErrors? }`.
+- Revalidate paths after mutations (`revalidatePath`).
+- Imports use `@/` aliases; reuse `components/ui/*`.
+- Never commit `.env` or secrets; document new vars in `.env.example`.
+- Minimal diffs — no unrelated refactors.
+
+## Key paths
+
+`app/` routes · `lib/auth` · `lib/income` · `lib/dashboard` · `prisma/` · `middleware.ts`
+
+## Product docs
+
+`docs/PRD.md` · `docs/ARCHITECTURE.md` · `docs/DESIGN_SYSTEM.md` — update when scope, architecture, or UI conventions change.
