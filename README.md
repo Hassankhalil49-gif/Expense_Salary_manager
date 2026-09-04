@@ -123,11 +123,17 @@ middleware.ts           # Protects /dashboard; redirects auth pages
 
 | Doc | Purpose |
 |-----|---------|
+| [docs/README.md](./docs/README.md) | Docs index |
+| [docs/SOURCE_OF_TRUTH.md](./docs/SOURCE_OF_TRUTH.md) | Canonical files for product, code, and agents |
 | [docs/PRD.md](./docs/PRD.md) | Product requirements, phases, feature status |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | System design, layers, data flow |
+| [docs/SYSTEM_DESIGN.md](./docs/SYSTEM_DESIGN.md) | System design decisions and diagrams |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Layers, request/mutation data flows |
+| [docs/DATA_MODEL.md](./docs/DATA_MODEL.md) | ERD, fields, planned entities |
 | [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) | UI tokens, components, theming |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Branching, PRs, coding conventions |
 | [AGENTS.md](./AGENTS.md) | Guidance for AI coding agents |
+| [llms.txt](./llms.txt) | Compact map for LLM / agent tools |
+| [.github/copilot-instructions.md](./.github/copilot-instructions.md) | GitHub Copilot repo instructions |
 | [.cursor/rules/](./.cursor/rules/) | Cursor project rules |
 
 ## License

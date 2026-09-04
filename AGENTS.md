@@ -2,6 +2,9 @@
 
 Guidance for AI coding agents working in this repository.
 
+**Canonical index:** [docs/SOURCE_OF_TRUTH.md](./docs/SOURCE_OF_TRUTH.md)  
+**Short map for LLMs:** [llms.txt](./llms.txt)
+
 ## Project
 
 Expense & Salary Manager — Next.js 15 App Router app for personal income tracking (expenses/budgets planned). Stack: React 19, Prisma + PostgreSQL, NextAuth v5 (Credentials + JWT), Zod, Tailwind, shadcn/ui.
@@ -15,6 +18,7 @@ Expense & Salary Manager — Next.js 15 App Router app for personal income track
 5. **Match local style.** Read a nearby file before editing. Preserve existing ActionResult shapes, import order, and folder layout.
 6. **Minimal diffs.** No drive-by refactors, unrelated formatting, or unsolicited README rewrites unless asked.
 7. **Database:** Prefer `prisma migrate` migrations for schema changes; commit SQL under `prisma/migrations/`.
+8. **Docs stay current.** When changing scope, schema, or conventions, update the matching file under `docs/` (see Source of Truth).
 
 ## Where things live
 
@@ -61,7 +65,8 @@ export async function createThing(input: unknown): Promise<ActionResult<...>> {
 1. Update `prisma/schema.prisma`.
 2. Add migration (`npm run db:migrate`).
 3. Add types/queries/actions + validations.
-4. Do not expose other users' rows.
+4. Update `docs/DATA_MODEL.md`.
+5. Do not expose other users' rows.
 
 ## Planned features (nav placeholders)
 
@@ -84,11 +89,25 @@ Do not force-push, amend others' commits, or change git config unless the user e
 
 | Doc | When to use |
 |-----|-------------|
+| [docs/SOURCE_OF_TRUTH.md](./docs/SOURCE_OF_TRUTH.md) | Which file is canonical |
 | [docs/PRD.md](./docs/PRD.md) | Scope, priorities, feature status |
+| [docs/SYSTEM_DESIGN.md](./docs/SYSTEM_DESIGN.md) | Decisions, system diagrams |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Layers, auth/data flow, module shape |
+| [docs/DATA_MODEL.md](./docs/DATA_MODEL.md) | ERD and entity specs |
 | [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) | Tokens, components, theming, a11y |
 
-When shipping a new module: update PRD status, architecture (if model/layers change), and design notes if you introduce tokens or patterns.
+When shipping a new module: update PRD status, architecture/data model (if schema/layers change), and design notes if you introduce tokens or patterns.
+
+## Shared agent context on GitHub
+
+These files are committed so Cursor, GitHub Copilot, and other tools see the same rules:
+
+| File | Role |
+|------|------|
+| `AGENTS.md` | This file |
+| `llms.txt` | Compact LLM entrypoint |
+| `.github/copilot-instructions.md` | Copilot repo instructions |
+| `.cursor/rules/*.mdc` | Cursor scoped/always rules |
 
 ## Docs to keep in sync
 

@@ -25,4 +25,4 @@ Next.js 15 App Router + Prisma/PostgreSQL + NextAuth v5 (Credentials, JWT) + Zod
 
 ## Product docs
 
-`docs/PRD.md` · `docs/ARCHITECTURE.md` · `docs/DESIGN_SYSTEM.md` — update when scope, architecture, or UI conventions change.
+`docs/SOURCE_OF_TRUTH.md` · `docs/PRD.md` · `docs/SYSTEM_DESIGN.md` · `docs/ARCHITECTURE.md` · `docs/DATA_MODEL.md` · `docs/DESIGN_SYSTEM.md` — update when scope, architecture, or UI conventions change. Agent context: `AGENTS.md`, `llms.txt`, `.github/copilot-instructions.md`.

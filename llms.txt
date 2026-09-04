@@ -1,0 +1,43 @@
+# Expense & Salary Manager
+
+> Personal finance web app: track salary/income today; expenses, budgets, and savings goals next.
+> Stack: Next.js 15 App Router, React 19, Prisma, PostgreSQL, NextAuth v5 (Credentials + JWT), Zod, Tailwind, shadcn/ui.
+
+## Canonical context (read in order)
+
+1. /AGENTS.md — hard rules for coding agents
+2. /docs/SOURCE_OF_TRUTH.md — which files win on conflict
+3. /docs/PRD.md — product requirements and feature status
+4. /docs/SYSTEM_DESIGN.md — system design and decisions
+5. /docs/ARCHITECTURE.md — layers, request/mutation flows, diagrams
+6. /docs/DATA_MODEL.md — entities and ERD
+7. /docs/DESIGN_SYSTEM.md — UI tokens and conventions
+8. /prisma/schema.prisma — database schema (authoritative for data shape)
+9. /.env.example — required environment variables
+10. /.github/copilot-instructions.md — GitHub Copilot repo instructions
+
+## Non-negotiable rules
+
+- Prefer Server Components; `"use client"` only for interactive UI
+- Mutations: Server Actions in `lib/**/actions.ts` with `"use server"`
+- Always `requireAuth()` then filter Prisma by `userId`
+- Validate with Zod in `lib/validations/*` before writes
+- Action results: `{ success: true, data? }` | `{ success: false, error, fieldErrors? }`
+- Never commit secrets; document new env vars in `.env.example`
+- Prefer Prisma migrations over `db:push` for shared databases
+
+## Key paths
+
+- `app/` — routes
+- `lib/auth/` — NextAuth + session helpers
+- `lib/income/` — income domain
+- `lib/dashboard/` — dashboard aggregates + nav
+- `lib/validations/` — Zod schemas
+- `prisma/` — schema + migrations
+- `middleware.ts` — protects `/dashboard/*`
+
+## Optional deeper reads
+
+- /CONTRIBUTING.md
+- /README.md
+- /.cursor/rules/ — Cursor-specific rules (also useful as style reference)

@@ -2,7 +2,7 @@
 
 **Product:** Expense & Salary Manager  
 **Status:** Active development (MVP in progress)  
-**Last updated:** 2026-09-03  
+**Last updated:** 2026-09-05  
 **Repo:** [Expense_Salary_manager](https://github.com/Hassankhalil49-gif/Expense_Salary_manager)
 
 ---
@@ -27,7 +27,7 @@ Existing tools are either too heavy, too sales-driven, or not tailored to salary
 ### Primary (MVP)
 
 1. Secure account (register / login).
-2. Record and manage income entries with type, status, and recurrence.
+2. Record and manage income entries with type, status, and recurrence flag.
 3. Dashboard summary for the current month (income, expenses placeholder, savings math).
 4. Responsive UI with light/dark theme.
 
@@ -38,6 +38,7 @@ Existing tools are either too heavy, too sales-driven, or not tailored to salary
 7. Savings goals.
 8. Recurring expenses and transaction ledger.
 9. Reports and insights.
+10. User settings (profile, default currency, preferences).
 
 ### Non-goals (for now)
 
@@ -62,6 +63,7 @@ Existing tools are either too heavy, too sales-driven, or not tailored to salary
 1. Visit `/` → redirect to `/login` (or `/dashboard` if already signed in).
 2. Register with name, email, password → land on dashboard.
 3. Login with credentials → JWT session (30-day max age).
+4. Logout clears session and returns to auth flow.
 
 ### 5.2 Income
 
@@ -117,10 +119,18 @@ Existing tools are either too heavy, too sales-driven, or not tailored to salary
 | S1 | Savings goals | P1 | Not started |
 | R1 | Recurring expenses | P1 | Not started |
 | T1 | Unified transactions view | P2 | Not started |
-| P1 | Reports / insights | P2 | Not started |
+| P2 | Reports / insights | P2 | Not started |
 | C1 | Settings (profile, currency, preferences) | P2 | Not started |
 
 Nav placeholders live in `lib/dashboard/navigation.ts` (`enabled: false`).
+
+### Acceptance criteria (MVP)
+
+- [x] New user can register and reach `/dashboard` without manual DB setup beyond migrations.
+- [x] Authenticated user can create, edit, delete, and change status on own income only.
+- [x] Unauthenticated requests to `/dashboard/*` redirect to login.
+- [x] Dashboard shows current-month income aggregate for the signed-in user.
+- [ ] Expenses module drives non-zero expense/savings metrics (post-MVP).
 
 ## 7. Non-functional requirements
 
@@ -132,10 +142,11 @@ Nav placeholders live in `lib/dashboard/navigation.ts` (`enabled: false`).
 | Theming | System / light / dark via `next-themes` |
 | Reliability | Zod validation; Server Action result objects for expected failures |
 | Maintainability | Feature folders under `lib/` + `components/`; Prisma migrations |
+| Documentation | PRD, system design, architecture, data model, design system kept in sync; agent sources of truth on GitHub |
 
 ## 8. Success metrics (suggested)
 
-- Time-to-first income entry &lt; 2 minutes after register
+- Time-to-first income entry under 2 minutes after register
 - Weekly active users logging ≥ 1 income or expense
 - Zero cross-user data leaks in QA
 - p95 dashboard load under 2s on typical laptop + local DB
@@ -158,9 +169,19 @@ Nav placeholders live in `lib/dashboard/navigation.ts` (`enabled: false`).
 | **v1.1** | Budgets + recurring expenses |
 | **v2** | Savings goals, reports, insights, settings |
 
+```mermaid
+flowchart LR
+  MVP[MVP: Auth + Income + Dashboard] --> V1[v1: Expenses]
+  V1 --> V11[v1.1: Budgets + recurring]
+  V11 --> V2[v2: Goals + reports + settings]
+```
+
 ## 11. Related docs
 
-- [Architecture](./ARCHITECTURE.md)
+- [Sources of truth](./SOURCE_OF_TRUTH.md) — which files are canonical for agents and humans
+- [System design](./SYSTEM_DESIGN.md) — decisions and system diagrams
+- [Architecture](./ARCHITECTURE.md) — layers and data-flow sequences
+- [Data model](./DATA_MODEL.md) — ERD and entity specs
 - [Design system](./DESIGN_SYSTEM.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Agents](../AGENTS.md)
