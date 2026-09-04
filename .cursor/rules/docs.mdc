@@ -6,10 +6,15 @@ alwaysApply: false
 
 # Product documentation
 
-Canonical docs live under `docs/`:
+Canonical docs live under `docs/`. Index: `docs/SOURCE_OF_TRUTH.md`.
 
+- `SOURCE_OF_TRUTH.md` — which files win on conflict (product, code, agents)
 - `PRD.md` — requirements, phases, status tables
-- `ARCHITECTURE.md` — layers, flows, data model
+- `SYSTEM_DESIGN.md` — decisions, context/container diagrams
+- `ARCHITECTURE.md` — layers, sequence/data flows, module pattern
+- `DATA_MODEL.md` — ERD, fields; defer to `prisma/schema.prisma` on conflict
 - `DESIGN_SYSTEM.md` — tokens, components, theming
 
-When implementing a planned nav module (expenses, budgets, etc.), update PRD status and enable nav only when the route works. Reflect schema/layer changes in ARCHITECTURE. New colors or component patterns belong in DESIGN_SYSTEM (prefer CSS variables over hard-coded values).
+Agent-facing context shared on GitHub: root `AGENTS.md`, `llms.txt`, `.github/copilot-instructions.md`, `.cursor/rules/`.
+
+When implementing a planned nav module (expenses, budgets, etc.), update PRD status and enable nav only when the route works. Reflect schema/layer changes in ARCHITECTURE, SYSTEM_DESIGN, and DATA_MODEL. New colors or component patterns belong in DESIGN_SYSTEM (prefer CSS variables over hard-coded values). Prefer Mermaid diagrams in markdown over binary images.

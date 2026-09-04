@@ -1,7 +1,7 @@
 # Design System
 
 **Product:** Expense & Salary Manager  
-**Last updated:** 2026-09-03  
+**Last updated:** 2026-09-05  
 **UI kit:** [shadcn/ui](https://ui.shadcn.com) — **New York** style, **Neutral** base, CSS variables  
 **Icons:** Lucide React  
 **Fonts:** Geist Sans (UI), Geist Mono (code/numeric optional)
@@ -209,7 +209,9 @@ Keep motion subtle:
 
 ## 12. Related docs
 
+- [Sources of truth](./SOURCE_OF_TRUTH.md)
 - [PRD](./PRD.md)
+- [System design](./SYSTEM_DESIGN.md)
 - [Architecture](./ARCHITECTURE.md)
 - [README](../README.md)
 - Token source: `app/globals.css`, `tailwind.config.ts`, `components.json`

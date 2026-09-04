@@ -79,11 +79,14 @@ Prefer small PRs (one feature or fix). Rebase or merge `main` into your branch b
 
 Before large features, skim:
 
+- [docs/SOURCE_OF_TRUTH.md](./docs/SOURCE_OF_TRUTH.md) — which files are canonical
 - [docs/PRD.md](./docs/PRD.md) — what to build and priority
+- [docs/SYSTEM_DESIGN.md](./docs/SYSTEM_DESIGN.md) — system decisions and diagrams
 - [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — where code should live
+- [docs/DATA_MODEL.md](./docs/DATA_MODEL.md) — entities and ERD
 - [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) — UI tokens and patterns
 
-Update those docs in the same PR when you change scope, data model, or visual conventions.
+Update those docs in the same PR when you change scope, data model, or visual conventions. Agent guidance lives in [AGENTS.md](./AGENTS.md), [llms.txt](./llms.txt), and [.github/copilot-instructions.md](./.github/copilot-instructions.md).
 
 ## Getting help
 
